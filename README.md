@@ -1,60 +1,62 @@
 # Fixed Income Analytics
 
-This repository contains a small Python library implementing core fixed-income analytics for vanilla fixed-rate bonds.
+A modular Python implementation of core fixed-rate bond analytics.
 
-The objective of this project is to demonstrate a clear understanding of bond pricing mechanics, yield curve discounting, spread analysis, and interest rate risk measures.
+This project implements two pricing frameworks:
 
-The implementation focuses on clarity, modularity, and financial correctness rather than production-level optimisation.
+- Yield-to-Maturity (YTM) pricing  
+- Zero-curve discounting with z-spread solver  
 
----
+It also includes standard interest rate risk measures:
+DV01, modified duration, convexity, and key rate DV01.
 
-## Project Objective
-
-This project was built to:
-
-- Understand how bonds are priced under different frameworks
-- Implement yield-based and curve-based pricing approaches
-- Compute standard interest rate risk measures
-- Solve for yield and z-spread using numerical methods
-- Structure financial code in a clean and modular way
-
-The goal is to bridge theoretical fixed-income concepts and practical Python implementation.
+The objective is to demonstrate a clear understanding of bond pricing mechanics, yield curves, and spread analysis in a clean and structured codebase.
 
 ---
 
-## Implemented Frameworks
+## Features
 
-### 1. Yield-to-Maturity (YTM) Framework
-
-- Price from yield
-- Solve yield from price (bisection method)
-- DV01
-- Modified duration
-- Convexity
-
-This framework uses a single constant yield and is useful for pedagogical and quick analytical purposes.
+- Price from YTM  
+- Solve YTM from price (bisection method)  
+- Curve-based bond pricing  
+- Z-spread solver  
+- DV01 and key rate DV01  
+- Modified duration and convexity  
 
 ---
 
-### 2. Zero-Curve Framework
+## Project Structure
 
-- Cashflow schedule generation
-- Discounting using a zero rate curve
-- Z-spread solver
-- Flat DV01
-- Key rate DV01
-
-This framework reflects more realistic market practice, where bonds are discounted using a term structure of interest rates rather than a single yield.
+```
+src/bond_analytics/
+examples/
+tests/
+```
 
 ---
 
-## Risk Measures
+## Installation
 
-Risk metrics are computed using finite-difference bumping:
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+python -m pip install -e .
+```
 
-- DV01
-- Modified duration
-- Convexity
-- Key rate DV01 (per curve node)
+---
 
-This allows sensitivity analysis consistent with trading desk methodologies.
+## Run Examples
+
+```bash
+python examples/demo_ytm.py
+python examples/demo_curve_zspread.py
+python examples/demo_key_rate_dv01.py
+```
+
+---
+
+## Run Tests
+
+```bash
+python -m pytest -q
+```
