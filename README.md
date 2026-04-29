@@ -60,5 +60,3 @@ python examples/demo_key_rate_dv01.py
 ```bash
 python -m pytest -q
 ```
-Louis Pochet
-Master in Financial Analysis
